@@ -1,0 +1,27 @@
+class <%= file_name.classify %> < Grnds::Onetime::Runner
+  attr_reader :failure_message
+
+  # @return [String] A short note on what the purpose of this script is
+  def description
+    <<-DOC
+      Add your documentation here.
+    DOC
+    fail NotImplementedError, "Documentation has not been added for #{self.class.name}"
+  end
+
+  # @return [String] The engineer that owns this script
+  def owner
+    "John Bjön"
+    fail NotImplementedError, "Ownership has not been claimed for #{self.class.name}"
+  end
+
+  # This is the entry point for your script. The full Rails stack is available.
+  # Return true if it was successful, false if not. If not successful,
+  # set @failure_message to something meaningful. Runs that return false
+  # will not be marked as run and will be continue to be run in subsequent
+  # batch runs
+  # @return [Bool] Success or failure
+  def run
+
+  end
+end

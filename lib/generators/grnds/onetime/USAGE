@@ -1,0 +1,7 @@
+Description:
+    Creates a skeleton for a onetime script that should be run
+
+Example:
+    rails generate grnds:onetime name_of_task
+    This will create:
+        script/onetime/#{timestamp}_name_of_task.rb
