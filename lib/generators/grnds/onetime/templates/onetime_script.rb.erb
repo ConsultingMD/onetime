@@ -11,8 +11,7 @@ class <%= file_name.classify %> < Grnds::Onetime::Runner
 
   # @return [String] The engineer that owns this script
   def owner
-    "John Bjön"
-    fail NotImplementedError, "Ownership has not been claimed for #{self.class.name}"
+    <%= owner_body || 'fail NotImplementedError, "Ownership has not been claimed for #{self.class.name}"' %>
   end
 
   # This is the entry point for your script. The full Rails stack is available.
