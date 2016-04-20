@@ -3,13 +3,8 @@ namespace :onetime do
     ActiveRecord::Base.connection.table_exists? 'onetime_scripts'
   end
 
-  desc 'Checks if the required table exists'
-  task check_table_exists: :environment  do
-    if table_exists?
-      puts "The table onetime_scripts exists"
-    else
-      raise "The table onetime_scripts doesn't exist\nTo create the table run 'rake onetime:install'\n\n"
-    end
+  def ensure_table_exists
+    Rake::Task['onetime:install'] unless table_exists?
   end
 
   desc 'Creates the table needed for grnds-onetime to track the scripts that have been run'
@@ -30,7 +25,8 @@ namespace :onetime do
   end
 
   desc 'Run all pending onetime scripts'
-  task run_pending_scripts: :check_table_exists  do
+  task run_pending_scripts: :environment do
+    ensure_table_exists
     runner = Grnds::Onetime::Runner.new
     runner.run_all
   end
