@@ -2,7 +2,7 @@ module Grnds
   module Onetime
     class Railtie < Rails::Railtie
       rake_tasks do
-        load 'tasks/script.rake'
+        load 'tasks/onetime.rake'
       end
     end
   end
